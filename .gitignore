@@ -1,1 +1,10 @@
+# SAM
 .aws-sam/
+
+# IDEs
+.vscode/
+.kiro/
+
+# General
+.DS_Store
+.envrc
