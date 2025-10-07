@@ -3,25 +3,27 @@ Transform: AWS::Serverless-2016-10-31
 
 Globals:
   Function:
+    Runtime: python3.10
     CodeUri: lambda
-    Runtime: python3.6
-          
+
 Resources:
+  ResourceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: resource.handler
+      Policies: AmazonS3FullAccess
+
   MacroFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: macro.handler
-      Timeout: 60
-      Policies:
-        - Version: '2012-10-17' 
-          Statement:
-            - Effect: Allow
-              Action: ec2:DescribeAvailabilityZones
-              Resource: '*'
+      Policies: AmazonS3FullAccess
+      Environment:
+        Variables:
+          LAMBDA_ARN: !GetAtt ResourceFunction.Arn
 
   Macro:
     Type: AWS::CloudFormation::Macro
     Properties:
-      Name: CreateSubnetsPerAZ
-      Description: Macro to create Subnets for every available AZ
+      Name: S3Objects
       FunctionName: !GetAtt MacroFunction.Arn

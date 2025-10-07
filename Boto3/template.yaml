@@ -2,17 +2,26 @@ Transform: AWS::Serverless-2016-10-31
 
 Globals:
   Function:
-    Runtime: python3.9
+    Runtime: python3.10
     CodeUri: lambda
 
 Resources:
+  ResourceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: resource.handler
+      Policies: PowerUserAccess
+
   MacroFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: macro.handler
+      Environment:
+        Variables:
+          LAMBDA_ARN: !GetAtt ResourceFunction.Arn
 
   Macro:
     Type: AWS::CloudFormation::Macro
     Properties:
-      Name: ShortHand
+      Name: Boto3
       FunctionName: !GetAtt MacroFunction.Arn

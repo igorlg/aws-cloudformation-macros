@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: tests String macro functions
+Transform: PyPlate
 
 Metadata:
   cfn-lint:
@@ -23,4 +24,3 @@ Resources:
         for tag in params['Tags']:
            key, value = tag.split('=')
            output.append({"Key": key, "Value": value})
-Transform: [PyPlate]

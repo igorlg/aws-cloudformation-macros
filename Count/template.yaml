@@ -1,27 +1,22 @@
 Transform: AWS::Serverless-2016-10-31
+Description: >
+  Count macro
+  A simple iterator for creating multipledentical resources
 
 Globals:
   Function:
-    Runtime: python3.9
+    Runtime: python3.10
     CodeUri: lambda
+    Timeout: 5
 
 Resources:
-  ResourceFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: resource.handler
-      Policies: PowerUserAccess
-
   MacroFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: macro.handler
-      Environment:
-        Variables:
-          LAMBDA_ARN: !GetAtt ResourceFunction.Arn
 
   Macro:
     Type: AWS::CloudFormation::Macro
     Properties:
-      Name: Boto3
+      Name: Count
       FunctionName: !GetAtt MacroFunction.Arn

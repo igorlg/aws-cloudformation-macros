@@ -1,58 +1,79 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 
-Globals:
-  Function:
-    Runtime: python3.9
-    CodeUri: lambda
+Metadata:
+  cfn-lint:
+    config:
+      ignore_checks:
+        - W3002
 
 Resources:
   Boto3MacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: Boto3/macro.yaml
+      TemplateURL: Boto3/macro.yaml
 
   CountMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: Count/macro.yaml
+      TemplateURL: Count/macro.yaml
 
   ExecutionRoleBuilderMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: ExecutionRoleBuilder/macro.yaml
+      TemplateURL: ExecutionRoleBuilder/macro.yaml
 
   ExplodeMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: Explode/macro.yaml
+      TemplateURL: Explode/macro.yaml
 
   PublicAndPrivateSubnetPerAZMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: PublicAndPrivateSubnetPerAZ/macro.yaml
+      TemplateURL: PublicAndPrivateSubnetPerAZ/macro.yaml
 
   PyPlateMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: PyPlate/macro.yaml
+      TemplateURL: PyPlate/macro.yaml
 
   S3ObjectsMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: S3Objects/macro.yaml
+      TemplateURL: S3Objects/macro.yaml
 
   ShortHandMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: ShortHand/macro.yaml
+      TemplateURL: ShortHand/macro.yaml
 
   StackMetricsMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: StackMetrics/macro.yaml
+      TemplateURL: StackMetrics/macro.yaml
 
   StringFunctionsMacroStack:
-    Type: AWS::Serverless::Application
+    Type: AWS::CloudFormation::Stack
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
     Properties:
-      Location: StringFunctions/macro.yaml
+      TemplateURL: StringFunctions/macro.yaml
