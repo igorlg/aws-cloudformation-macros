@@ -1,22 +1,21 @@
-MACROS = $(subst .,,$(subst /,,$(dir $(shell find . -maxdepth 2 -type f -name template.yaml))))
+MACROS = $(sort $(subst .,,$(subst /,,$(dir $(shell find . -maxdepth 2 -type f -name template.yaml)))))
+BUILD_TARGETS :=  $(addsuffix /.aws-sam/build/template.yaml,$(MACROS))
+DEPLOY_TARGETS := $(addsuffix /.aws-sam/result.txt,$(MACROS))
 
 SAM_BUILD_OPTS := --use-container
 
-.PHONY: $(MACROS)
 
-all: $(MACROS)
+build: $(BUILD_TARGETS)
+deploy: $(DEPLOY_TARGETS)
+all: deploy
 
-$(MACROS):
-	pushd $@ \
-	&& sam build  $(SAM_OPTS) $(SAM_BUILD_OPTS) \
-	&& sam deploy $(SAM_OPTS) $(SAM_DEPLOY_OPTS)
 
-# delete:
-# 	for i in $(MACROS); do \
-# 		cd $$i; \
-# 		sam delete --no-prompts --region $(REGION); \
-# 		cd ..; \
-# 	done
+$(BUILD_TARGETS): %/.aws-sam/build/template.yaml : %/template.yaml %/samconfig.toml %/lambda/
+	pushd $(dir $<) && sam build $(SAM_BUILD_OPTS)
+
+$(DEPLOY_TARGETS): %/.aws-sam/result.txt : %/.aws-sam/build/template.yaml
+	pushd $(dir $(abspath $(@)/../)) && sam deploy
+	date > $@
 
 # all_embedded:
 # 	sam deploy
@@ -24,5 +23,5 @@ $(MACROS):
 # delete_embedded:
 # 	sam delete --no-prompts --region $(REGION)
 
-# $(MACROS):
-# 	cd $@ && sam deploy
+clean:
+	find . -type d -name .aws-sam -exec rm -rf {} \; 2>/dev/null
