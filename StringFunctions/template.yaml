@@ -3,8 +3,10 @@ Transform: AWS::Serverless-2016-10-31
 
 Globals:
   Function:
-    Runtime: python3.10
+    Runtime: python3.13
     CodeUri: lambda
+    Architectures:
+      - arm64
 
 Resources:
   MacroFunction:

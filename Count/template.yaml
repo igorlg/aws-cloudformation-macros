@@ -5,9 +5,11 @@ Description: >
 
 Globals:
   Function:
-    Runtime: python3.10
+    Runtime: python3.13
     CodeUri: lambda
     Timeout: 5
+    Architectures:
+      - arm64
 
 Resources:
   MacroFunction:

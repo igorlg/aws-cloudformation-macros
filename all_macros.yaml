@@ -13,67 +13,67 @@ Resources:
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: Boto3/macro.yaml
+      TemplateURL: Boto3/template.yaml
 
   CountMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: Count/macro.yaml
+      TemplateURL: Count/template.yaml
 
   ExecutionRoleBuilderMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: ExecutionRoleBuilder/macro.yaml
+      TemplateURL: ExecutionRoleBuilder/template.yaml
 
   ExplodeMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: Explode/macro.yaml
+      TemplateURL: Explode/template.yaml
 
   PublicAndPrivateSubnetPerAZMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: PublicAndPrivateSubnetPerAZ/macro.yaml
+      TemplateURL: PublicAndPrivateSubnetPerAZ/template.yaml
 
   PyPlateMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: PyPlate/macro.yaml
+      TemplateURL: PyPlate/template.yaml
 
   S3ObjectsMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: S3Objects/macro.yaml
+      TemplateURL: S3Objects/template.yaml
 
   ShortHandMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: ShortHand/macro.yaml
+      TemplateURL: ShortHand/template.yaml
 
   StackMetricsMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: StackMetrics/macro.yaml
+      TemplateURL: StackMetrics/template.yaml
 
   StringFunctionsMacroStack:
     Type: AWS::CloudFormation::Stack
     UpdateReplacePolicy: Delete
     DeletionPolicy: Delete
     Properties:
-      TemplateURL: StringFunctions/macro.yaml
+      TemplateURL: StringFunctions/template.yaml
