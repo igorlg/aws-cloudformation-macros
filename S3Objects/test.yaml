@@ -17,6 +17,11 @@ Resources:
         This is my text file;
         there are many like it,
         but this one is mine.
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3006
 
   Object2:
     Type: AWS::S3::Object
@@ -27,6 +32,11 @@ Resources:
         ACL: public-read
         ContentType: image/png
       Base64Body: R0lGODdhAQABAIABAP///0qIbCwAAAAAAQABAAACAkQBADs=
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3006
 
   Object3:
     Type: AWS::S3::Object
@@ -38,3 +48,8 @@ Resources:
         Bucket: !Ref Bucket
         Key: README-copy.md
         ACL: public-read
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3006

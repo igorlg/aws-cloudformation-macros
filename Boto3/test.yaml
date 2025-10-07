@@ -23,3 +23,9 @@ Resources:
       FilePath: README.md
       CommitMessage: Add another README.md
       Name: CloudFormation
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3001
+            - E3006

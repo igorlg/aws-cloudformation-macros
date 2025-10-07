@@ -24,3 +24,9 @@ Resources:
         for tag in params['Tags']:
            key, value = tag.split('=')
            output.append({"Key": key, "Value": value})
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3012
+            - E3024

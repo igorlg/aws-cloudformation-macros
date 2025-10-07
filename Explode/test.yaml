@@ -27,5 +27,12 @@ Resources:
         Rules:
           - ExpirationInDays: "!Explode Retention"
             Status: Enabled
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3001
+            - E3012
+
   NonExplodingBucket:
     Type: AWS::S3::Bucket
